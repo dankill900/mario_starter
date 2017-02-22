@@ -80,11 +80,18 @@ public class Enemy : MonoBehaviour {
 			// remove a life from the player
 			playerComponent.Lives = playerComponent.Lives - 1;
 
+            // score
+            playerComponent.Score = playerComponent.Score - 10;
+
 			// reset the player
 			playerComponent.Reset();
 
 			// reset the enemy
 			Reset();
-		}
+		} else if(hit.collider.gameObject.CompareTag("Gardener"))
+        {
+            playerGameObject.GetComponent<Player>().Score += 100;
+            Destroy(gameObject);
+        }
 	}
 }
